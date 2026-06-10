@@ -2,6 +2,7 @@
 
 FROM ghcr.io/netcracker/qubership-docker-integration-tests:main
 
+
 # Switch to root for installation of dependencies and packages
 # Required for AWS EKS deployments and S3 integration scripts
 USER root
