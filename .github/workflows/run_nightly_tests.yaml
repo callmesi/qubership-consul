@@ -4,8 +4,26 @@ permissions:
   contents: read
 
 on:
-  schedule:
-    - cron: '0 0 * * *'
+  workflow_dispatch:
+    inputs:
+      service_branch:
+        description: 'Branch to run tests against'
+        required: false
+        default: 'main'
+      skip_wait:
+        description: 'Skip waiting for dev_build.yml to complete (use when images are already built)'
+        required: false
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths-ignore:
+      - "docs/**"
+      - "CODE-OF-CONDUCT.md"
+      - "CONTRIBUTING.md"
+      - "LICENSE"
+      - "README.md"
+      - "SECURITY.md"
 
 jobs:
   Nightly-Consul-Pipeline:
